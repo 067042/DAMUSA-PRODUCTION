@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11110f">
+  <meta name="description" content="DAMUSA — African roots. German precision. A contemporary fashion concept shaped by South African heritage and modern design.">
+  <title>DAMUSA — African Roots. German Precision.</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #11110f;
+      --ivory: #f7f4ed;
+      --muted: #bdb9ae;
+      --gold: #c4a66a;
+      --line: rgba(247, 244, 237, .2);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--ink); color: var(--ivory); font-family: var(--sans); }
+    a { color: inherit; text-decoration: none; }
+    button { color: inherit; font: inherit; }
+    img { display: block; width: 100%; object-fit: cover; }
+    .announcement { padding: 10px 20px; background: var(--gold); color: var(--ink); text-align: center; font-size: 10px; letter-spacing: .19em; text-transform: uppercase; }
+    .header { position: absolute; z-index: 5; top: 37px; left: 0; width: 100%; padding: 24px 6vw; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.25); }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 700; letter-spacing: .2em; }
+    .mark { width: 34px; height: 34px; }
+    .nav { display: flex; align-items: center; gap: clamp(20px, 3vw, 48px); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+    .nav a, .header-action { transition: color .2s ease; }
+    .nav a:hover, .header-action:hover { color: var(--gold); }
+    .header-tools { display: flex; align-items: center; gap: 22px; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; }
+    .menu-toggle { display: none; padding: 8px 0 8px 8px; border: 0; background: none; cursor: pointer; }
+    .hero { min-height: min(780px, 94vh); display: flex; align-items: center; position: relative; overflow: hidden; background: #272522; }
+    .hero-image { position: absolute; inset: 0; height: 100%; object-position: center 34%; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,12,11,.84), rgba(12,12,11,.38) 54%, rgba(12,12,11,.05)), linear-gradient(0deg, rgba(12,12,11,.35), transparent 50%); }
+    .hero-copy { position: relative; z-index: 1; width: min(720px, 88%); margin: 118px 0 35px 11vw; }
+    .eyebrow { color: var(--gold); font-size: 10px; letter-spacing: .25em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 700px; margin: 24px 0; font: 500 clamp(50px, 8vw, 108px)/.99 var(--serif); letter-spacing: -.045em; }
+    h1 span { color: var(--gold); }
+    .hero-copy p { max-width: 440px; color: #e2dfd8; font-size: 14px; line-height: 1.9; }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: 0 23px; border: 1px solid var(--ivory); font-size: 9px; letter-spacing: .17em; text-transform: uppercase; transition: background .2s, color .2s, border-color .2s; }
+    .button-primary { border-color: var(--gold); background: var(--gold); color: var(--ink); }
+    .button:hover { border-color: var(--ivory); background: var(--ivory); color: var(--ink); }
+    .hero-note { position: absolute; right: 6vw; bottom: 43px; z-index: 1; color: #e3ded4; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; writing-mode: vertical-rl; }
+    .ticker { padding: 16px 12px; border-bottom: 1px solid var(--line); color: var(--gold); text-align: center; font-size: 9px; letter-spacing: .22em; text-transform: uppercase; }
+    .section { padding: 105px 8vw; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 37px; }
+    h2 { margin: 13px 0 0; font: 500 clamp(34px, 5vw, 57px)/1.1 var(--serif); letter-spacing: -.025em; }
+    .text-link { padding-bottom: 6px; border-bottom: 1px solid var(--gold); color: var(--ivory); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
+    .collections { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .collection-card { min-height: 400px; position: relative; overflow: hidden; background: #292724; }
+    .collection-card img { height: 100%; position: absolute; inset: 0; transition: transform .6s ease; }
+    .collection-card:hover img { transform: scale(1.04); }
+    .collection-card::after { content: ""; position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, rgba(0,0,0,.75)); }
+    .collection-info { position: absolute; z-index: 1; right: 24px; bottom: 25px; left: 24px; }
+    .collection-info h3 { margin: 0 0 8px; font: 500 26px var(--serif); }
+    .collection-info span { color: #ddd8cc; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
+    .heritage { display: grid; grid-template-columns: 1fr 1fr; min-height: 550px; background: #e9e4d8; color: var(--ink); }
+    .heritage-image { min-height: 480px; height: 100%; }
+    .heritage-copy { padding: clamp(44px, 8vw, 105px); align-self: center; }
+    .heritage-copy .eyebrow { color: #8e7241; }
+    .heritage-copy p { max-width: 460px; margin: 24px 0 31px; color: #514e47; font-size: 13px; line-height: 1.9; }
+    .heritage-copy .button { border-color: var(--ink); }
+    .heritage-copy .button:hover { background: var(--ink); color: var(--ivory); }
+    .heritage-notes { padding-top: 50px; }
+    .heritage-notes > p { max-width: 680px; margin: 17px 0 30px; color: var(--muted); font-size: 13px; line-height: 1.9; }
+    .heritage-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .heritage-note { padding: 26px; background: var(--ink); }
+    .heritage-note h3 { margin: 0 0 11px; color: var(--gold); font: 500 21px var(--serif); }
+    .heritage-note p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.8; }
+    .products { background: #171715; }
+    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .product-image { aspect-ratio: 3 / 4; position: relative; overflow: hidden; background: #292724; }
+    .product-image img { height: 100%; transition: transform .45s ease; }
+    .product-card:hover .product-image img { transform: scale(1.04); }
+    .product-tag { position: absolute; top: 12px; left: 12px; padding: 7px 9px; background: var(--ivory); color: var(--ink); font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
+    .product-info { padding-top: 14px; font-size: 12px; }
+    .product-meta { margin-top: 7px; color: var(--muted); font-size: 10px; line-height: 1.7; }
+    .story { display: grid; grid-template-columns: .85fr 1.15fr; gap: 8vw; align-items: center; }
+    .story-image { max-height: 520px; height: 100%; min-height: 350px; }
+    .story-copy p { max-width: 475px; margin: 23px 0 30px; color: var(--muted); font-size: 13px; line-height: 2; }
+    .newsletter { padding: 76px 20px; background: #26231e; text-align: center; }
+    .newsletter h2 { font-size: clamp(34px, 4vw, 48px); }
+    .newsletter p { margin: 15px auto 25px; color: var(--muted); font-size: 12px; }
+    .signup { display: flex; width: min(440px, 100%); margin: auto; border-bottom: 1px solid var(--muted); }
+    .signup input { flex: 1; min-width: 0; padding: 14px 4px; border: 0; outline: 0; background: transparent; color: var(--ivory); font: inherit; font-size: 12px; }
+    .signup button { padding: 0 4px 0 15px; border: 0; background: none; color: var(--gold); cursor: pointer; font-size: 9px; letter-spacing: .13em; text-transform: uppercase; }
+    .form-message { min-height: 18px; margin-top: 12px; color: var(--gold); font-size: 11px; }
+    footer { padding: 52px 8vw 25px; }
+    .footer-main { display: flex; justify-content: space-between; gap: 35px; padding-bottom: 42px; }
+    .footer-brand p { max-width: 260px; margin-top: 14px; color: var(--muted); font-size: 11px; line-height: 1.8; }
+    .footer-links { display: flex; gap: clamp(35px, 7vw, 100px); }
+    .footer-links h3 { margin-bottom: 15px; color: var(--gold); font-size: 9px; letter-spacing: .17em; text-transform: uppercase; }
+    .footer-links a { display: block; margin: 10px 0; color: var(--muted); font-size: 11px; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 19px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; letter-spacing: .08em; }
+    .concept-note { margin: -18px 0 30px; color: var(--muted); font-size: 11px; line-height: 1.8; }
+    .symbol-note { padding: 25px; border: 1px solid var(--line); }
+    .symbol-note h3 { margin: 0 0 9px; color: var(--gold); font: 500 20px var(--serif); }
+    .symbol-note p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.8; }
+
+    @media (max-width: 900px) {
+      .header { padding-inline: 5vw; }
+      .nav { gap: 18px; }
+      .collections { grid-template-columns: 1fr 1fr; }
+      .collection-card { min-height: 320px; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); row-gap: 30px; }
+      .section { padding: 78px 6vw; }
+    }
+    @media (max-width: 650px) {
+      .announcement { font-size: 8px; }
+      .header { top: 34px; padding: 16px 5vw; }
+      .brand { font-size: 15px; }
+      .mark { width: 29px; height: 29px; }
+      .menu-toggle { display: block; order: 3; }
+      .nav { display: none; position: absolute; top: 100%; right: 0; left: 0; padding: 18px 5vw 24px; background: rgba(17,17,15,.97); border-bottom: 1px solid var(--line); }
+      .nav.open { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+      .header-tools { margin-left: auto; margin-right: 20px; }
+      .header-tools .search-link { display: none; }
+      .hero { min-height: 690px; min-height: 88svh; }
+      .hero-image { object-position: 58% center; }
+      .hero::after { background: linear-gradient(90deg, rgba(12,12,11,.77), rgba(12,12,11,.2)), linear-gradient(0deg, rgba(12,12,11,.3), transparent 60%); }
+      .hero-copy { margin: 120px 0 25px 7vw; }
+      h1 { font-size: clamp(50px, 15vw, 78px); }
+      .hero-copy p { max-width: 340px; font-size: 12px; }
+      .hero-note { right: 5vw; bottom: 26px; font-size: 8px; }
+      .section { padding: 67px 6vw; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 17px; }
+      .collections { gap: 10px; }
+      .collection-card:first-child { min-height: 380px; }
+      .collection-card { min-height: 240px; }
+      .collection-card:first-child { grid-column: span 2; min-height: 340px; }
+      .collection-info { right: 15px; bottom: 17px; left: 15px; }
+      .collection-info h3 { font-size: 21px; }
+      .collection-info span { font-size: 8px; }
+      .heritage { grid-template-columns: 1fr; }
+      .heritage-image { min-height: 350px; max-height: 460px; }
+      .heritage-copy { padding: 55px 7vw; }
+      .heritage-notes { padding-top: 38px; }
+      .heritage-grid { grid-template-columns: 1fr; }
+      .heritage-note { padding: 22px; }
+      .product-grid { gap: 24px 12px; }
+      .product-info { font-size: 11px; }
+      .story { grid-template-columns: 1fr; gap: 35px; }
+      .story-image { min-height: 340px; max-height: 420px; }
+      .footer-main { flex-direction: column; }
+      .footer-links { justify-content: space-between; }
+      .footer-bottom { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">A new perspective on heritage — explore the first DAMUSA edit</div>
+  <header class="header">
+    <a class="brand" href="#home" aria-label="DAMUSA home">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M5 5h12c10 0 17 7 17 15S27 35 17 35H5V5Z" stroke="#c4a66a" stroke-width="1.6"/>
+        <path d="M12 28V12l8 9 8-9v16" stroke="#f7f4ed" stroke-width="1.6"/>
+        <path d="m20 16 4 5-4 5-4-5 4-5Z" stroke="#c4a66a" stroke-width="1.2"/>
+      </svg>
+      <span>DAMUSA</span>
+    </a>
+    <nav class="nav" id="main-nav" aria-label="Main navigation">
+      <a href="#collections">Collections</a>
+      <a href="#heritage">Our heritage</a>
+      <a href="#story">Our story</a>
+      <a href="#products">Lookbook</a>
+    </nav>
+    <div class="header-tools">
+      <a class="header-action search-link" href="#collections">Discover</a>
+      <a class="header-action" href="#collections">The DAMUSA edit</a>
+    </div>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+      <svg width="23" height="18" viewBox="0 0 23 18" fill="none" aria-hidden="true"><path d="M1 2h21M1 9h21M1 16h21" stroke="currentColor"/></svg>
+    </button>
+  </header>
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-image" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&amp;fit=crop&amp;w=2000&amp;q=85" alt="Fashion model in a sculptural modern outfit">
+      <div class="hero-copy">
+        <div class="eyebrow">South African heritage · Contemporary design</div>
+        <h1 id="hero-title">African roots.<br><span>German precision.</span></h1>
+        <p>Rooted in South Africa. Designed for the world. Contemporary fashion shaped by heritage, creative exchange and considered design.</p>
+        <div class="actions">
+          <a class="button button-primary" href="#products">Explore the lookbook</a>
+          <a class="button" href="#heritage">Discover our heritage</a>
+        </div>
+      </div>
+      <div class="hero-note">Two worlds. One identity.</div>
+    </section>
+    <div class="ticker">Rooted in South Africa · Designed for the world · Born from culture · Built for tomorrow</div>
+
+    <section class="section" id="collections">
+      <div class="section-heading">
+        <div><div class="eyebrow">The DAMUSA edit</div><h2>Many worlds. Unique identities.</h2></div>
+        <a class="text-link" href="#products">Explore the design directions</a>
+      </div>
+      <div class="collections">
+        <a class="collection-card" href="#heritage">
+          <img src="./south-african-heritage.jpg" alt="Two fashion models wearing geometric garments and colorful beadwork" loading="lazy">
+          <div class="collection-info"><h3>South African Heritage</h3><span>Rooted in place, created with care</span></div>
+        </a>
+        <a class="collection-card" href="#products">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&amp;fit=crop&amp;w=850&amp;q=80" alt="Friends exploring contemporary fashion" loading="lazy">
+          <div class="collection-info"><h3>Modern Streetwear</h3><span>Movement, made personal</span></div>
+        </a>
+        <a class="collection-card" href="#products">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=850&amp;q=80" alt="Editorial portrait with warm natural light" loading="lazy">
+          <div class="collection-info"><h3>German Minimalism</h3><span>Clarity in every line</span></div>
+        </a>
+        <a class="collection-card" href="#products">
+          <img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&amp;fit=crop&amp;w=850&amp;q=80" alt="Tailored contemporary fashion in neutral tones" loading="lazy">
+          <div class="collection-info"><h3>Premium Essentials</h3><span>Everyday, considered</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="heritage" id="heritage">
+      <img class="heritage-image" src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Handcrafted jewelry and material details" loading="lazy">
+      <div class="heritage-copy">
+        <div class="eyebrow">South African Heritage</div>
+        <h2>Rooted in culture. Made for now.</h2>
+        <p>Our heritage collection explores contemporary interpretations of South African design, material and creative life. These are starting points for respectful design—not traditional garments, cultural endorsements or substitutes for learning from the people and communities behind each tradition.</p>
+        <a class="button" href="#heritage-details">Explore the inspirations</a>
+      </div>
+    </section>
+
+    <section class="section heritage-notes" id="heritage-details">
+      <div class="eyebrow">Distinct inspirations, considered separately</div>
+      <h2>Many roots. Always evolving.</h2>
+      <p>South Africa holds many distinct cultures and creative practices. DAMUSA treats these references individually, avoids sacred or restricted motifs, and distinguishes contemporary inspiration from authentic traditional clothing.</p>
+      <div class="heritage-grid">
+        <article class="heritage-note">
+          <h3>Ndebele-inspired geometry</h3>
+          <p>Bold lines, geometric composition and selective colour blocking inform contemporary statement pieces. The aim is an original design language, not a reproduction of specific community art or symbols.</p>
+        </article>
+        <article class="heritage-note">
+          <h3>Basotho blanket-inspired layering</h3>
+          <p>Layered outerwear and thoughtful pattern placement explore the visual language of blankets with respect for their cultural meaning. These fashion concepts are not Basotho blankets or traditional attire.</p>
+        </article>
+        <article class="heritage-note">
+          <h3>Xhosa-inspired textile details</h3>
+          <p>Beadwork and textile are considered as distinct sources of creative inspiration, not interchangeable decoration. Any future design should be researched with cultural care and developed with appropriate context and collaborators.</p>
+        </article>
+        <article class="heritage-note">
+          <h3>South African craft &amp; urban expression</h3>
+          <p>Local creative life, earth tones and contemporary tailoring inform an evolving design direction. The collection is a concept, not a claim of partnership, cultural endorsement or locally made production.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section products" id="products">
+      <div class="section-heading">
+        <div><div class="eyebrow">Visual direction</div><h2>Ideas taking shape.</h2></div>
+        <span class="text-link">Concept lookbook</span>
+      </div>
+      <p class="concept-note">These are visual design directions, not products currently for sale. Prices, sizes, stock, manufacturing details and checkout are not configured.</p>
+      <div class="product-grid">
+        <article class="product-card">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Structured black leather jacket" loading="lazy"><span class="product-tag">Concept</span></div>
+          <div class="product-info">Architectural outerwear</div><div class="product-meta">A study in sculptural form and precise lines.</div>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Minimal tailored outerwear" loading="lazy"></div>
+          <div class="product-info">Layered forms</div><div class="product-meta">An exploration of warmth, volume and proportion.</div>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Modern clothing on a clean display" loading="lazy"><span class="product-tag">Concept</span></div>
+          <div class="product-info">Contemporary textile</div><div class="product-meta">A canvas for considered texture and detail.</div>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Essential contemporary white shirt" loading="lazy"></div>
+          <div class="product-info">Everyday essentials</div><div class="product-meta">Quiet shapes, versatile by design.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section story" id="story">
+      <img class="story-image" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&amp;fit=crop&amp;w=1100&amp;q=80" alt="Portrait in soft natural light" loading="lazy">
+      <div class="story-copy">
+        <div class="eyebrow">Two worlds. One identity.</div>
+        <h2>Designed between perspectives.</h2>
+        <p>DAMUSA brings together South African cultural inspiration, African Fashion Week creativity and German-inspired precision. Our point of view is captured in two phrases: “Two Worlds. One Identity.” and “Born from Culture. Built for Tomorrow.”</p>
+        <a class="text-link" href="#brand-symbol">The DAMUSA identity</a>
+      </div>
+    </section>
+
+    <section class="section" id="brand-symbol">
+      <div class="symbol-note">
+        <div class="eyebrow">The DAMUSA mark</div>
+        <h3>A geometric D/M-inspired monogram</h3>
+        <p>The original concept combines architectural lines with a central diamond to suggest precision and geometric artistry. The mark shown here is a website concept, not a finalized production vector or cultural symbol. It will need refinement and testing before use in embroidery, labels or manufacturing.</p>
+      </div>
+    </section>
+
+    <section class="newsletter" aria-labelledby="newsletter-title">
+      <div class="eyebrow">Stay in the picture</div>
+      <h2 id="newsletter-title">A note from DAMUSA.</h2>
+      <p>Collection stories, new perspectives, and a little inspiration. Sign-up is a visual preview; no mailing list is connected yet.</p>
+      <form class="signup" id="newsletter-form">
+        <label for="email" class="visually-hidden">Email address</label>
+        <input id="email" name="email" type="email" placeholder="Your email address" required>
+        <button type="submit">Sign me up →</button>
+      </form>
+      <div class="form-message" id="form-message" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a class="brand" href="#home">
+          <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M5 5h12c10 0 17 7 17 15S27 35 17 35H5V5Z" stroke="#c4a66a" stroke-width="1.6"/><path d="M12 28V12l8 9 8-9v16" stroke="#f7f4ed" stroke-width="1.6"/><path d="m20 16 4 5-4 5-4-5 4-5Z" stroke="#c4a66a" stroke-width="1.2"/></svg>
+          <span>DAMUSA</span>
+        </a>
+        <p>African roots. German precision. A contemporary expression of identity.</p>
+      </div>
+      <div class="footer-links">
+        <div><h3>Explore</h3><a href="#collections">Collections</a><a href="#heritage">Our heritage</a><a href="#story">Our story</a></div>
+        <div><h3>Connect</h3><a href="#newsletter-title">Newsletter</a><a href="#story">About DAMUSA</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> DAMUSA. A brand concept.</span><span>Made with intention.</span></div>
+  </footer>
+  <style>.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }</style>
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("#main-nav");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Open menu" : "Close menu");
+      nav.classList.toggle("open", !isOpen);
+    });
+    nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open menu");
+    }));
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+    document.querySelector("#newsletter-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      document.querySelector("#form-message").textContent = "Thank you for your interest. Newsletter sign-up will be available soon.";
+      event.currentTarget.reset();
+    });
+  </script>
+</body>
+</html>
