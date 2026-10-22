@@ -2,7 +2,7 @@ FROM python:3.12-alpine
 
 WORKDIR /site
 
-COPY index.html favicon.svg south-african-heritage.jpg modern-streetwear.jpg ./
+COPY index.html favicon.svg south-african-heritage.jpg modern-streetwear.jpg damusa-story.jpg ./
 
 EXPOSE 10000
 
